@@ -11,7 +11,7 @@ import { InvestmentResultsComponent } from './investment-results/investment-resu
   styleUrl: './app.css'
 })
 export class App {
-  resultsData? : OutputData[];
+  resultsData = signal<OutputData[] | undefined>(undefined);
     calculateInvestmentResults(data:{
       initialInvestment: number, 
       annualInvestment: number,
@@ -37,6 +37,6 @@ export class App {
       });
     }
     console.log(annualData);
-    this.resultsData = annualData;
+    this.resultsData.set(annualData);
   }
 }
